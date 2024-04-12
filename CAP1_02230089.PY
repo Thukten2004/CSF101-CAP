@@ -1,56 +1,62 @@
 ################################
 # Thukten Yezer
-# 1. Electrical
+# 1 Electrical
 # 02230089
 ################################
 # REFERENCES
 # @CHAT_GPT
-# @DQ-Logo
+# @Quilbit
+# @Blackbox.ai
+# @WB3 school
+# @ Learn python from Android
 ################################
 # SOLUTION
-# Your Solution Score: 50267
+# Solution Score: 50267
 # CSF101-CAP/input_9_cap1.txt
 ################################
 
-# Read the input file
+# Reading the input file using the function read_input
 def read_input(name_of_the_file):
-    x = []
+    XY = [] #To store a data in the form of list due to repeatable letters
     with open(name_of_the_file, 'r') as file:
         while True:
-            y = file.readline()
-            if not y:
-                break  # End of file
-            opponent_choice, outcome = y.split()
-            x.append((opponent_choice, outcome))
-    return x
+            YY = file.readline()#readline() is used  to pause program execution and fordisplaying new information.
+            if not YY:
+                break 
+            opponentchoice, result = YY.split()#split() is used to breaks a text string into a substrings
+            XY.append((opponentchoice, result))
+    return XY #Returning the function
 
-# To Calculate the score for each round
+# To Calculate the score for each round, using the function calculate_score
 def calculate_score(Total_Number_of_rounds):
-    Score = 0
-    for opponent_choice, outcome in Total_Number_of_rounds:
-        if outcome == 'X':  # Concede defeat
-            if opponent_choice == 'A':
-                Score =Score + 3  #  if pPaper blocks Rock
-            elif opponent_choice == 'B':
-                Score =Score + 1  # if cissors cuts Paper
-            elif opponent_choice == 'C':
-                Score = Score + 2  # if ock crushes sicssor
-        elif outcome == 'Y':  # Draw
-            if opponent_choice == 'A':
-                Score = Score + 4  # if both showed rock so it's a draw
-            elif opponent_choice == 'B':
-                Score = Score + 5  # if both showed paper so it's a draw
-            elif opponent_choice == 'C':
-                Score = Score + 6  # if both showed scissor so it's a draw
-        elif outcome == 'Z':  # Victory
-            if opponent_choice == 'A':
-                Score = Score + 8  # if paper beats rock
-            elif opponent_choice == 'B':
-                Score = Score + 9  # if scissor cuts paper
-            elif opponent_choice == 'C':
-                Score = Score + 7  # if rock crushes scissor
-    print(f"The total score is:{Score}") #outcome : your total score is score
+    Score = 0 #Evaluting a score starting from zero
+    for opponentchoice, outcome in Total_Number_of_rounds:
+        if outcome == 'X':  # if the outcome is X we must Concede defeat
+            if opponentchoice == 'A':
+                Score =Score + 3  #  If the opponent cast Rock, we must show scissors to lose
+            elif opponentchoice == 'B':
+                Score =Score + 1  #  If the opponent cast Paper, we must show rock to lose
+            elif opponentchoice == 'C':
+                Score = Score + 2  # If the opponent cast Scissor, we must show paper to lose
 
-# To run a program by inputing the valid file name.
+        elif outcome == 'Y':  #  if the outcome is Y, result must be declared as draw between opponent and us
+            if opponentchoice == 'A':
+                Score = Score + (3+1)  # if both we and the opponent cast rock, it's a draw
+            elif opponentchoice == 'B':
+                Score = Score + (3+2)  # if both we and the opponent cast paper, it's a draw
+            elif opponentchoice == 'C':
+                Score = Score + (3+3) # if both we and the opponent cast scissor, it's a draw
+
+        elif outcome == 'Z':  #  if the outcome is Z we must win over the opponent.
+            if opponentchoice == 'A':
+                Score = Score + (6+2)  # if the opponent choose rock, we must choose paper to win 
+            elif opponentchoice == 'B':
+                Score = Score + (6+3)  # if the opponent choose paper, we must choose scissor to win
+            elif opponentchoice == 'C':
+                Score = Score + (6+1)  # if the opponent choose scissor, we must choose rock to win
+
+    print(f"The total score is:{Score}") #outcome : your  Final total score is equal to score
+
+# To run a program by inputing the valid file name which the fuction was called earlier.
 calculate_score(read_input("CSF101-CAP/input_9_cap1.txt"))
 
