@@ -4,10 +4,9 @@
 # 02230089
 ################################
 # REFERENCES
-# @CHAT_GPT
-# @Quilbit
-# @Blackbox.ai
-# @WB3 school
+# @CHAT_GPT (To define strip(), readline()) https://chat.openai.com/c/57dea198-314f-4efc-8492-ff749004c9d5
+# @Blackbox.ai (To change into while loop) https://www.blackbox.ai/chat/wfS9eID
+# @WB3 school  (To learn the basics of coding) https://www.w3schools.com/python/
 # @ Learn python from Android
 ################################
 # SOLUTION
@@ -55,7 +54,7 @@ def calculate_score(Total_Number_of_rounds_to_be_executed):
             elif opponentchoice == 'C':
                 Score = Score + (6+1)  # if the opponent choose scissor, we must choose rock to win
 
-    print(f"The total score is:{Score}") #outcome : your  Final total score is equal to score
+    print(f"The total score is:{Score}") #outcome : your  Final total score is equal to Score
 
 # To run a program by inputing the valid file name which the fuction was called earlier.
 calculate_score(read_input("CSF101-CAP/input_9_cap1.txt"))
